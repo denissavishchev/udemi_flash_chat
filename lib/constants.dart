@@ -1,41 +1,54 @@
 import 'package:flutter/material.dart';
 
+const kBackgroundImage = BoxDecoration(
+  image: DecorationImage(
+    image: AssetImage("assets/images/bg.png"),
+    fit: BoxFit.cover,
+  ),
+);
+
 const kSendButtonTextStyle = TextStyle(
-  color: Colors.lightBlueAccent,
+  color: Colors.grey,
   fontWeight: FontWeight.bold,
   fontSize: 18.0,
 );
 
-const kMessageTextFieldDecoration = InputDecoration(
+InputDecoration kMessageTextFieldDecoration = InputDecoration(
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
   hintText: 'Type your message here...',
+  hintStyle: TextStyle(
+    color: Colors.white.withOpacity(0.85)
+  ),
   border: InputBorder.none,
 );
 
 const kMessageContainerDecoration = BoxDecoration(
   border: Border(
-    top: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
+    top: BorderSide(color: Colors.grey, width: 2.0),
   ),
 );
 
-const kTextFieldDecoration = InputDecoration(
+InputDecoration kTextFieldDecoration = InputDecoration(
   hintText: '',
   hintStyle: TextStyle(
-      color: Colors.grey
+      color: Colors.white,
+    fontFamily: 'Dark',
+    fontSize: 28,
   ),
   contentPadding:
   EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
   border: OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+    borderRadius: BorderRadius.all(Radius.circular(20.0)),
   ),
   enabledBorder: OutlineInputBorder(
     borderSide:
-    BorderSide(color: Colors.lightBlueAccent, width: 1.0),
-    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+    BorderSide(color: Colors.white.withOpacity(0.85), width: 1.0),
+    borderRadius: BorderRadius.all(Radius.circular(20.0)),
   ),
   focusedBorder: OutlineInputBorder(
     borderSide:
-    BorderSide(color: Colors.lightBlueAccent, width: 2.0),
-    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+    BorderSide(color: Colors.white.withOpacity(0.85), width: 2.0),
+    borderRadius: BorderRadius.all(Radius.circular(20.0)),
   ),
 );
+

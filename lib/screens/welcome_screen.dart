@@ -1,8 +1,9 @@
+import 'package:chat/constants.dart';
 import 'package:chat/screens/login_screen.dart';
 import 'package:chat/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
-
+import 'package:flutter_glow/flutter_glow.dart';
+import 'package:neon/neon.dart';
 import '../components/rounded_button.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -12,8 +13,8 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin {
-
+class _WelcomeScreenState extends State<WelcomeScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation animation;
 
@@ -23,15 +24,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
 
     controller = AnimationController(
       duration: Duration(seconds: 5),
-        vsync: this,
+      vsync: this,
     );
 
-    animation = ColorTween(begin: Colors.red, end: Colors.blue).animate(controller);
+    animation =
+        ColorTween(begin: Colors.red, end: Colors.blue).animate(controller);
 
     controller.forward();
 
     controller.addListener(() {
-      setState((){});
+      setState(() {});
     });
   }
 
@@ -44,49 +46,67 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: animation.value,
       body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
-
+        decoration: kBackgroundImage,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Hero(
-                  tag: 'logo',
-                  child: Container(
-                    child: Image.asset('assets/images/logo.gif'),
-                    height: 60,
+            const SizedBox(
+              height: 72,
+            ),
+            Container(
+              width: double.maxFinite,
+              decoration: const BoxDecoration(
+                color: Colors.black,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.white38,
+                    offset: Offset(0, 3),
+                    blurRadius: 15,
+                    spreadRadius: 1,
                   ),
-                ),
-                 TypewriterAnimatedTextKit(
-                  text: ['Dark Chat'],
-                  textStyle: TextStyle(
-                    fontSize: 45.0,
-                    fontWeight: FontWeight.w900,
+                  BoxShadow(
+                    color: Colors.white38,
+                    offset: Offset(0, -3),
+                    blurRadius: 15,
+                    spreadRadius: 1,
                   ),
+                ],
+              ),
+              child: const Center(
+                child: GlowText(
+                  'Dark Chat',
+                  style: TextStyle(
+                      color: Colors.white, fontFamily: 'Dark', fontSize: 60),
                 ),
-              ],
+              ),
             ),
             const SizedBox(
-              height: 48.0,
+              height: 220.0,
             ),
-            RoundedButton(
-              title: 'Log In',
-              color: Colors.lightBlueAccent,
-              onPressed: () {
-                Navigator.pushNamed(context, LoginScreen.id);
-              },
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  RoundedButton(
+                    title: 'Log In',
+                    color: Colors.black.withOpacity(0.85),
+                    onPressed: () {
+                      Navigator.pushNamed(context, LoginScreen.id);
+                    },
+                  ),
+                  const SizedBox(height: 42,),
+                  RoundedButton(
+                    title: 'Register',
+                    color: Colors.black.withOpacity(0.85),
+                    onPressed: () {
+                      Navigator.pushNamed(context, RegistrationScreen.id);
+                    },
+                  ),
+                ],
               ),
-            RoundedButton(
-              title: 'Register',
-              color: Colors.blueAccent,
-              onPressed: () {
-                Navigator.pushNamed(context, RegistrationScreen.id);
-              },
             ),
           ],
         ),
@@ -94,5 +114,3 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
     );
   }
 }
-
-
