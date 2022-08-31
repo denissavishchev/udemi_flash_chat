@@ -1,16 +1,6 @@
-# chat
+# Chat App from Udemi
 
-A new Flutter project.
+With FireBase
 
-## Getting Started
+![Screenshot 2022-08-31 at 16 02 07](https://user-images.githubusercontent.com/77541683/187698027-83df0630-bc0b-4679-9ec2-381276620f55.png)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
